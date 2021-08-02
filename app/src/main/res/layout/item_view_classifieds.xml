@@ -21,19 +21,27 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/item_view_bg"
         android:layout_marginRight="8dp"
+        android:background="@drawable/item_view_bg"
         android:onClick="@{()->listener.onItemClicked(itemViewModel)}">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivAds"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            app:cardCornerRadius="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:imageUrl="@{itemViewModel.image_urls_thumbnail}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAds"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:imageUrl="@{itemViewModel.image_urls_thumbnail}" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -41,10 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/proxima_nova_bold"
+            android:text="@{itemViewModel.name}"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:text="@{itemViewModel.name}"
-            app:layout_constraintStart_toEndOf="@id/ivAds"
+            app:layout_constraintStart_toEndOf="@id/cardView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="4" />
 
