@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemViewModel"
+            type="com.dub.domain.entity.DashBoardEntity.Product" />
+
+        <variable
+            name="listener"
+            type="com.dub.classifieds.presentation.listeners.OnItemClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/item_view_bg"
+        android:layout_marginRight="8dp"
+        android:onClick="@{()->listener.onItemClicked(itemViewModel)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAds"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            app:imageUrl="@{itemViewModel.image_urls_thumbnail}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="@{itemViewModel.name}"
+            app:layout_constraintStart_toEndOf="@id/ivAds"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="4" />
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proxima_nova_regular"
+            android:text="@{itemViewModel.price}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintWidth_percent="4" />
+
+        <TextView
+            android:id="@+id/txtCreatedOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proxima_nova_regular"
+            android:text="@{itemViewModel.created_at}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/txtPrice"
+            app:layout_constraintTop_toBottomOf="@id/txtPrice"
+            app:layout_constraintWidth_percent="4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

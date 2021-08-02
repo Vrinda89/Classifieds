@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dub.classifieds.presentation.fragment.details.DetailsViewModel" />
+
+        <variable
+            name="data"
+            type="com.dub.domain.entity.DashBoardEntity.Product" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.fragment.details.DetailsFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAds"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            app:imageUrl="@{viewModel.items.image_url}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="@{viewModel.items.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivAds"
+            app:layout_constraintWidth_percent="4" />
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proxima_nova_regular"
+            android:textSize="18sp"
+            app:format="@{viewModel.items.price}"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintWidth_percent="4" />
+
+        <TextView
+            android:id="@+id/txtCreatedOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proxima_nova_regular"
+            android:textSize="16sp"
+            app:format="@{viewModel.items.created_at}"
+            app:layout_constraintStart_toStartOf="@id/txtPrice"
+            app:layout_constraintTop_toBottomOf="@id/txtPrice"
+            app:layout_constraintWidth_percent="4" />
+
+        <TextView
+            android:id="@+id/uid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/proxima_nova_regular"
+            android:textSize="16sp"
+            app:format="@{viewModel.items.uid}"
+            app:layout_constraintStart_toStartOf="@id/txtCreatedOn"
+            app:layout_constraintTop_toBottomOf="@id/txtCreatedOn"
+            app:layout_constraintWidth_percent="4" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
